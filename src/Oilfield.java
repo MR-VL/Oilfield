@@ -9,6 +9,7 @@ public class Oilfield
         try {
             spaces = getInput("Enter the total number of spaces you want on the grid: ", "Spaces");
 
+
             height = getInput("Enter the height you want the grid to be: ", "Height");
 
             if (height > spaces) {
@@ -20,9 +21,9 @@ public class Oilfield
             height = getInput("\nEnter the height you want the grid to be: ", "Height");
         }
 
-        System.out.println(spaces + " " + height);
-        //CreateField field = new CreateField(spaces, height);
-        //field.create();
+
+        CreateField field = new CreateField(spaces, height);
+        field.create();
 
     }
 
