@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import Exception.heightErrorException;
+
 public class Oilfield
 {
     public static void main(String[] args) {
@@ -15,7 +17,15 @@ public class Oilfield
             if (height > spaces) {
                 throw new heightErrorException("Error height cannot be greater than total spaces.");
             }
-
+/*
+            try {
+                boolean invalid = spaces % height != 0;
+                if(invalid){
+                    throw
+                }
+            }
+            catch ()
+*/
         } catch (heightErrorException e) {
             System.out.println(e + "\n");
             height = getInput("\nEnter the height you want the grid to be: ", "Height");
@@ -37,7 +47,7 @@ public class Oilfield
 
     public static int validate(int number, String type){
 
-        while(number <=0){
+        while(number <=0 ){
             System.out.printf("\nError, %s must be a number greater than 0.", type);
             String prompt = "\nEnter number of " + type;
             number = getInput(prompt, type);
