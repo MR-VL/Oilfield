@@ -1,20 +1,26 @@
 import java.util.Scanner;
-
 public class Oilfield
 {
     public static void main(String[] args) {
 
+        int height;
+        int spaces = 0;
 
-        int spaces = getInput("Enter the total number of spaces you want on the grid: ", "Spaces");
+        try {
+            spaces = getInput("Enter the total number of spaces you want on the grid: ", "Spaces");
 
-        int height = getInput("Enter the height you want the grid to be: ", "Height");
+            height = getInput("Enter the height you want the grid to be: ", "Height");
 
-        if (height > spaces) throw heightError(){
-            System.out.println("Error height cannot be greater than total spaces.");
+            if (height > spaces) {
+                throw new heightErrorException("Error height cannot be greater than total spaces.");
+            }
+
+        } catch (heightErrorException e) {
+            System.out.println(e + "\n");
+            height = getInput("\nEnter the height you want the grid to be: ", "Height");
         }
 
         System.out.println(spaces + " " + height);
-
         //CreateField field = new CreateField(spaces, height);
         //field.create();
 
@@ -31,8 +37,8 @@ public class Oilfield
     public static int validate(int number, String type){
 
         while(number <=0){
-            System.out.printf("Error, %s must be a number greater than 0.", type);
-            String prompt = "Enter number of " + type;
+            System.out.printf("\nError, %s must be a number greater than 0.", type);
+            String prompt = "\nEnter number of " + type;
             number = getInput(prompt, type);
         }
         return number;
