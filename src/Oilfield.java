@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import Exception.heightErrorException;
-
+import Exception.InvalidGridException;
 public class Oilfield
 {
     public static void main(String[] args) {
@@ -17,15 +17,24 @@ public class Oilfield
             if (height > spaces) {
                 throw new heightErrorException("Error height cannot be greater than total spaces.");
             }
-/*
+
             try {
                 boolean invalid = spaces % height != 0;
                 if(invalid){
-                    throw
+                    throw new InvalidGridException("Error: Cannot create grid with given numbers");
+                }
+            } catch (InvalidGridException e){
+                System.out.println(e + "\n");
+                spaces = getInput("Enter the total number of spaces you want on the grid: ", "Spaces");
+
+
+                height = getInput("Enter the height you want the grid to be: ", "Height");
+
+                if (height > spaces) {
+                    throw new heightErrorException("Error height cannot be greater than total spaces.");
                 }
             }
-            catch ()
-*/
+
         } catch (heightErrorException e) {
             System.out.println(e + "\n");
             height = getInput("\nEnter the height you want the grid to be: ", "Height");
