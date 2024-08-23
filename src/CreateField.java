@@ -1,6 +1,5 @@
 import Robot.Robot;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,43 +31,16 @@ public class CreateField {
         this.width = width;
     }
 
-    public int getTopRight() {
-        return topRight;
-    }
-
-    public void setTopRight(int topRight) {
-        this.topRight = topRight;
-    }
-
-    public int getTopLeft() {
-        return topLeft;
-    }
-
-    public void setTopLeft(int topLeft) {
-        this.topLeft = topLeft;
-    }
-
-    public int getBottomLeft() {
-        return bottomLeft;
-    }
-
-    public void setBottomLeft(int bottomLeft) {
-        this.bottomLeft = bottomLeft;
-    }
 
     int width;
-    int topRight;
-    int topLeft;
-    int bottomLeft;
+
     Robot robot = new Robot();
 
     public CreateField(int spaces, int height) {
         this.totalSpaces = spaces;
         this.height = height;
         this.width = totalSpaces / height;
-        this.topRight = width;
-        this.topLeft = 0;
-        this.bottomLeft = 0;
+
     }
 
     public void placeRobot(){
@@ -98,7 +70,7 @@ public class CreateField {
     }
 
     public void getNextMove(){
-        System.out.println("Enter a direction to move the robot in: (N, E, S, W)");
+        System.out.println("Enter a direction to move the robot in: (W, A, S, D)");
         Scanner input = new Scanner(System.in);
         char direction = input.next().charAt(0);
     }
