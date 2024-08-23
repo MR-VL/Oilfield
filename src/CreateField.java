@@ -2,6 +2,7 @@ import Robot.Robot;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class CreateField {
     int totalSpaces;
@@ -59,6 +60,7 @@ public class CreateField {
     int topRight;
     int topLeft;
     int bottomLeft;
+    Robot robot = new Robot();
 
     public CreateField(int spaces, int height) {
         this.totalSpaces = spaces;
@@ -71,27 +73,47 @@ public class CreateField {
 
     public void placeRobot(){
         Random random = new Random();
-        int[] coordinate = new int[2];
-        coordinate[0] = random.nextInt(height-1);
-        coordinate[1] = random.nextInt(width-1);
-        Robot robot = new Robot(coordinate);
-        displayCoordinates(robot.getCoordinates());
+        robot.setLr(random.nextInt(width-1));
+        robot.setUd(random.nextInt(height-1));
+        create();
     }
 
-    public void displayCoordinates(int[] coordinates){
-        System.out.println("Robot Coordinates: " + Arrays.toString(coordinates));
+    public void displayCoordinates(){
+        System.out.println("Robot Coordinates: [" + (robot.getUd()+1) + " , " +  (robot.getLr()+1) + "]");
     }
 
     public void create(){
-        placeRobot();
-
+        displayCoordinates();
         for (int i = 0; i< height; i++){
             for(int j = 0; j < width; j++){
-                System.out.print("  *  ");
+                if(i == robot.getUd() && j == robot.getLr()){
+                    System.out.print("  &  ");
+                }
+                else {
+                    System.out.print("  *  ");
+                }
             }
             System.out.println("\n");
         }
     }
 
+    public void getNextMove(){
+        System.out.println("Enter a direction to move the robot in: (N, E, S, W)");
+        Scanner input = new Scanner(System.in);
+        char direction = input.next().charAt(0);
+    }
 
 }
+
+
+/*
+*   $ $ $ $
+*   $ $ $ $
+*   $ $ $ $
+*   $ & $ $
+*
+* pos (3,1)
+*
+* x = 3 y = 1
+*
+* */

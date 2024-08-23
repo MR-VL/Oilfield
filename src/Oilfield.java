@@ -51,9 +51,14 @@ public class Oilfield
         }
 
         CreateField field = new CreateField(spaces, height);
+        field.placeRobot();
 
 
-        field.create();
+
+        //field.displayCoordinates();
+
+        //field.placeRobot();
+
 
 
 
