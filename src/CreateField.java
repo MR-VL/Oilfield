@@ -1,3 +1,8 @@
+import Robot.Robot;
+
+import java.util.Arrays;
+import java.util.Random;
+
 public class CreateField {
     int totalSpaces;
     int height;
@@ -64,12 +69,27 @@ public class CreateField {
         this.bottomLeft = 0;
     }
 
+    public void placeRobot(){
+        Random random = new Random();
+        int[] coordinate = new int[2];
+        coordinate[0] = random.nextInt(height-1);
+        coordinate[1] = random.nextInt(width-1);
+        Robot robot = new Robot(coordinate);
+        displayCoordinates(robot.getCoordinates());
+    }
+
+    public void displayCoordinates(int[] coordinates){
+        System.out.println("Robot Coordinates: " + Arrays.toString(coordinates));
+    }
+
     public void create(){
+        placeRobot();
+
         for (int i = 0; i< height; i++){
             for(int j = 0; j < width; j++){
                 System.out.print("  *  ");
             }
-            System.out.println();
+            System.out.println("\n");
         }
     }
 
