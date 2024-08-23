@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import Exception.heightErrorException;
 import Exception.InvalidGridException;
+
+import Formatting.ClearConsole;
+import Exception.ConsoleClsError;
 public class Oilfield
 {
     public static void main(String[] args) {
@@ -40,9 +43,19 @@ public class Oilfield
             height = getInput("\nEnter the height you want the grid to be: ", "Height");
         }
 
+        try {
+            ClearConsole console = new ClearConsole();
+        } catch (ConsoleClsError e) {
+
+            throw new RuntimeException(e);
+        }
 
         CreateField field = new CreateField(spaces, height);
+
+
         field.create();
+
+
 
     }
 
